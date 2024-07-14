@@ -15,8 +15,9 @@ export default function RateMovieButton({ movies }) {
     }
 
     return (
-        <>
+        <div className="Rating">
             <MovieSelector movies={movies} movie={movie} setMovie={setMovie} />
+            <section>Please submit your rating: </section>
             <form name="feedback-form">
                 <select value={rating} onChange={handleRatingChange}>
                     <option value="1"> 1/5 Stars </option>
@@ -29,6 +30,6 @@ export default function RateMovieButton({ movies }) {
                     onClick={handleButtonClick}
                 >Submit Rating</button>
             </form>
-        </>
+        </div>
     )
 }

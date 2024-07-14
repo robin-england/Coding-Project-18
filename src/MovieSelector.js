@@ -15,7 +15,8 @@ export default function MovieSelector({ movies, movie, setMovie }) {
 
     const displayMovie = movies.find(movie => movie.id === tempMovie) || {};
     return (
-        <>
+        <div className="Movie-Selector">
+            <section>Select your movie: </section>
             <select value={tempMovie} onChange={handleMovieChange}>
                 {movies.map(thisMovie => (
                     <option value={thisMovie.id}>{thisMovie.name}</option>
@@ -27,6 +28,7 @@ export default function MovieSelector({ movies, movie, setMovie }) {
                     photoURL={displayMovie.photoURL}
                 />
             </div>
-        </>
+            <hr/>
+        </div>
     )
 }
