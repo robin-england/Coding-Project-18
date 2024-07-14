@@ -1,19 +1,34 @@
-export default function RateMovieButton() {
-    
+import { useState } from "react";
+import MovieSelector from "./MovieSelector"
+
+export default function RateMovieButton({ movies }) {
+
+    const [rating, setRating] = useState(1);
+    const [movie, setMovie] = useState(movies[0]);
+
+    const handleRatingChange = (e) => {
+        setRating(e.target.value)
+    };
+
+    const handleButtonClick = () => {
+        alert(`Thank you for your feedback. Movie: ${movie} Rating: ${rating} out of 5 stars.`)
+    }
+
     return (
         <>
-    <form name="feedback-form" onSubmit={(e) => {
-      alert('Thank you for your feedback.')}}> 
-                <select name="rating" id="rating">
+            <MovieSelector movies={movies} movie={movie} setMovie={setMovie} />
+            <form name="feedback-form">
+                <select value={rating} onChange={handleRatingChange}>
                     <option value="1"> 1/5 Stars </option>
                     <option value="2"> 2/5 Stars </option>
                     <option value="3"> 3/5 Stars </option>
                     <option value="4"> 4/5 Stars </option>
                     <option value="5"> 5/5 Stars </option>
                 </select>
-                <button>Submit Rating</button>
+                <button
+                    onClick={handleButtonClick}
+                >Submit Rating</button>
             </form>
         </>
     )
 }
-
