@@ -3,15 +3,20 @@ import MovieSelector from "./MovieSelector"
 
 export default function RateMovieButton({ movies }) {
 
-    const [rating, setRating] = useState(1);
-    const [movie, setMovie] = useState(movies[0]);
+    const [rating, setRating] = useState(1);    // sets initial states for rating, movie, and comments
+    const [movie, setMovie] = useState("Titanic");
+    const [comments, setComments] = useState("")
 
-    const handleRatingChange = (e) => {
+    const handleRatingChange = (e) => {     // Stores Change in rating
         setRating(e.target.value)
     };
 
-    const handleButtonClick = () => {
-        alert(`Thank you for your feedback. Movie: ${movie} Rating: ${rating} out of 5 stars.`)
+    const handleCommentsChange = (e) => {   // Stores Change in Comments
+        setComments(e.target.value)
+    };
+
+    const handleButtonClick = () => {       // Displays alert showing selected movie, rating, and comments
+        alert(`Uploading feedback... Movie: ${movie}. Rating: ${rating} out of 5 stars. Comments: ${comments}`)
     }
 
     return (
@@ -26,9 +31,11 @@ export default function RateMovieButton({ movies }) {
                     <option value="4"> 4/5 Stars </option>
                     <option value="5"> 5/5 Stars </option>
                 </select>
-                <button
-                    onClick={handleButtonClick}
-                >Submit Rating</button>
+                <br />
+                Please share your feedback:
+                <input type="textarea" class="comments" onChange={handleCommentsChange}></input>
+                <br />
+                <button onClick={handleButtonClick}>Submit Feedback</button>
             </form>
         </div>
     )
